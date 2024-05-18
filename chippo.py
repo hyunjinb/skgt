@@ -37,10 +37,6 @@ Use the following pieces of retrieved context to conduct the interview consideri
 If you need to know more about the candidate's experience or skills, ask specific follow-up questions.
 Use three sentences maximum per question to keep the interview focused and efficient.
 
-Job Description: {job_description}
-
-Resume: {resume}
-
 Extracted questions: {questions}
 
 Note that you may ask the only one question at a time to keep the conversation natural.
@@ -60,6 +56,8 @@ Write down only the answers to questions that can be inferred from the given his
 Keep the summary concise and focused.
 
 Chat history: {chat_history}
+
+Job Description: {job_description}
 
 Note that the summary should be written in the language used in the chat history. (e.g. Korean)
 At the end of the summary, you should rate the candidate by following criteria:
@@ -208,8 +206,8 @@ if st.button("Summarise & Rate Candidate"):
     st.write_stream(
         chain.stream(
             {
-                "questions": st.session_state.questions,
                 "chat_history": st.session_state.messages,
+                "job_description": st.session_state.jd_docs,
             }
         )
     )
